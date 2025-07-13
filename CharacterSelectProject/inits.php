@@ -131,6 +131,19 @@ function initCharacters()
     return $characters;
 }
 
+function renderCharacterSection($char1,$char2,$char3,$char4)
+{
+    $chars = array($char1,$char2,$char3,$char4);
+    echo "<div style='padding: 3px; display: flex; background-color:purple;'>";
+    for($i=0; $i<4; $i++)
+    {
+        $char = $chars[$i];
+        echo "<img src='CharacterIcons/".$char->getCharacterName()."Icon.png' id='".$char->getCharacterName()."Icon'>";
+    }    
+    echo "</div>";
+    
+}
+
 $characters = initCharacters();
 
 ?>
