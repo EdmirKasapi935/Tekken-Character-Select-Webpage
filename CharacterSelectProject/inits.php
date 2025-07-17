@@ -134,7 +134,7 @@ function initCharacters()
 function renderCharacterSection($char1,$char2,$char3,$char4)
 {
     $chars = array($char1,$char2,$char3,$char4);
-    echo "<div style='padding: 3px; display: flex; background-color:purple;'>";
+    echo "<div style='padding-left: 2px; padding-right: 2px; display: flex;'>";
     for($i=0; $i<4; $i++)
     {
         $char = $chars[$i];

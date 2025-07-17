@@ -14,18 +14,18 @@ include("inits.php");
     <title>Document</title>
 </head>
 
-<body>
+<body style="background-image: url('Assets/ScreenBG.jpeg'); background-size: cover;">
 
 
 
-    <div style="width: 50%" ;>
+    <div style="width: 50%; height: 50%;";>
         <img src="CharacterNames/Name_Alisa.png" style="position: absolute; z-index: 10; margin-top:20%; margin-left:10%" id="currentCharacterName">
         <img src="" id="currentCharacterPicture" style="display: block; margin-top:10%; margin-left: auto; margin-right: auto; position: relative; z-index: -100;" class="">
     </div>
 
     <img src="Assets/P1Indicator.png" style="position: absolute; z-index: 5;" id="P1Indicator">     
 
-    <div style="width: 65.5%; margin:auto; background-color:red; ">
+    <div style="width: 54.2%; margin:auto; background-color:red; ">
 
         
 
@@ -92,7 +92,8 @@ include("inits.php");
         var characterIcon = document.getElementById(current.name + "Icon");
         var iconCoords = characterIcon.getBoundingClientRect();
         var indicator1 = document.getElementById("P1Indicator");
-        indicator1.style.left = 665.2000122070312 + "px";
+        
+        indicator1.style.left = 684.25 + "px";
         indicator1.style.top = 437.8374938964844 + "px";
 
 
@@ -110,9 +111,8 @@ include("inits.php");
                         indicator1.style.left = iconCoords.left + "px";
                         indicator1.style.top = iconCoords.top + "px";
                     }
-
-                    
-
+  
+                   
                     characterName.src = "CharacterNames/Name_" + current.name + ".png";
                     characterImage.src = "CharacterPictures/" + current.name + ".png";
 
