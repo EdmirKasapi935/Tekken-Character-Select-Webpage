@@ -11,12 +11,12 @@ include("inits.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="icon" href="Assets/tekken6_logo.png">
+    <title>Tekken 6 - Character Select</title>
 </head>
 
 <body class="screenbg">
 
-    <!-- height="540px" width="480px" -->
     <div class="firelayer">
 
         <div class="flex-container" style="position: static; z-index: 1;">
@@ -147,179 +147,147 @@ include("inits.php");
         indicator2.style.left = 679.9125366210938 + "px";
         indicator2.style.top = 495.3999938964844 + "px";
 
-       
+
 
         //event listener for Player 1, navigates with WASD
         document.addEventListener('keydown', function(e) {
-            bgmusic.play();
+            bgmusic.play(); //Starts the background music after interacting with any key
 
             switch (e.code) {
                 case 'KeyW':
                     if (currentP1.up) {
+                        currentP1 = characters[currentP1.up].character;
+                        changeP1Side(currentP1.name);
+                        reinitializeAnimP1()
+                        shiftIndicatorP1(currentP1.name);
                         playNodeSound();
-                        currentP1 = characters[currentP1.up].character
-                        P1Image.classList.remove("animp1");
-                        P1Image.offsetWidth;
-                        P1Image.classList.add("animp1");
-
-                        P1Icon = document.getElementById(currentP1.name + "Icon");
-                        P1iconCoords = P1Icon.getBoundingClientRect();
-                        indicator1.style.left = P1iconCoords.left + "px";
-                        indicator1.style.top = P1iconCoords.top + "px";
-
                     }
-
-
-                    P1Name.src = "CharacterNames/Name_" + currentP1.name + ".png";
-                    P1Image.src = "CharacterPictures/" + currentP1.name + ".png";
                     break;
                 case 'KeyS':
                     if (currentP1.down) {
+                        currentP1 = characters[currentP1.down].character;
+                        changeP1Side(currentP1.name);
+                        reinitializeAnimP1();
+                        shiftIndicatorP1(currentP1.name);
                         playNodeSound();
-                        currentP1 = characters[currentP1.down].character
-                        P1Image.classList.remove("animp1");
-                        P1Image.offsetWidth;
-                        P1Image.classList.add("animp1");
-
-                        P1Icon = document.getElementById(currentP1.name + "Icon");
-                        P1iconCoords = P1Icon.getBoundingClientRect();
-                        indicator1.style.left = P1iconCoords.left + "px";
-                        indicator1.style.top = P1iconCoords.top + "px";
-
                     }
-
-
-                    P1Name.src = "CharacterNames/Name_" + currentP1.name + ".png";
-                    P1Image.src = "CharacterPictures/" + currentP1.name + ".png";
                     break;
                 case 'KeyA':
                     if (currentP1.left) {
+
+                        currentP1 = characters[currentP1.left].character;
+                        changeP1Side(currentP1.name);
+                        reinitializeAnimP1();
+                        shiftIndicatorP1(currentP1.name);
                         playNodeSound();
-                        currentP1 = characters[currentP1.left].character
-                        P1Image.classList.remove("animp1");
-                        P1Image.offsetWidth;
-                        P1Image.classList.add("animp1");
-
-                        P1Icon = document.getElementById(currentP1.name + "Icon");
-                        P1iconCoords = P1Icon.getBoundingClientRect();
-                        indicator1.style.left = P1iconCoords.left + "px";
-                        indicator1.style.top = P1iconCoords.top + "px";
-
                     }
-
-
-                    P1Name.src = "CharacterNames/Name_" + currentP1.name + ".png";
-                    P1Image.src = "CharacterPictures/" + currentP1.name + ".png";
                     break;
                 case 'KeyD':
                     if (currentP1.right) {
+                        currentP1 = characters[currentP1.right].character;
+                        changeP1Side(currentP1.name);
+                        reinitializeAnimP1();
+                        shiftIndicatorP1(currentP1.name);
                         playNodeSound();
-                        currentP1 = characters[currentP1.right].character
-                        P1Image.classList.remove("animp1");
-                        P1Image.offsetWidth;
-                        P1Image.classList.add("animp1");
-
-                        P1Icon = document.getElementById(currentP1.name + "Icon");
-                        P1iconCoords = P1Icon.getBoundingClientRect();
-                        indicator1.style.left = P1iconCoords.left + "px";
-                        indicator1.style.top = P1iconCoords.top + "px";
 
                     }
-
-
-                    P1Name.src = "CharacterNames/Name_" + currentP1.name + ".png";
-                    P1Image.src = "CharacterPictures/" + currentP1.name + ".png";
                     break;
             }
         });
 
         //Event listner for Player 2, navigates with arrow keys
         document.addEventListener('keydown', function(e) {
-            bgmusic.play();
+            bgmusic.play(); //Starts the background music after interacting with any key, added it here too just in case 
+
             switch (e.key) {
                 case 'ArrowUp':
                     if (currentP2.up) {
+                        currentP2 = characters[currentP2.up].character;
+                        changeP2Side(currentP2.name);
+                        reinitializeAnimP2();
+                        shiftIndicatorP2(currentP2.name);
                         playNodeSound();
-                        currentP2 = characters[currentP2.up].character
-                        P2Image.classList.remove("animp2");
-                        P2Image.offsetWidth;
-                        P2Image.classList.add("animp2");
-
-                        P2Icon = document.getElementById(currentP2.name + "Icon");
-                        P2iconCoords = P2Icon.getBoundingClientRect();
-                        indicator2.style.left = P2iconCoords.left + "px";
-                        indicator2.style.top = P2iconCoords.top + "px";
                     }
-
-
-                    P2Name.src = "CharacterNames/Name_" + currentP2.name + ".png";
-                    P2Image.src = "CharacterPictures/" + currentP2.name + ".png";
                     break;
                 case 'ArrowDown':
                     if (currentP2.down) {
+                        currentP2 = characters[currentP2.down].character;
+                        changeP2Side(currentP2.name);
+                        reinitializeAnimP2();
+                        shiftIndicatorP2(currentP2.name);
                         playNodeSound();
-                        currentP2 = characters[currentP2.down].character
-                        P2Image.classList.remove("animp2");
-                        P2Image.offsetWidth;
-                        P2Image.classList.add("animp2");
-
-                        P2Icon = document.getElementById(currentP2.name + "Icon");
-                        P2iconCoords = P2Icon.getBoundingClientRect();
-                        indicator2.style.left = P2iconCoords.left + "px";
-                        indicator2.style.top = P2iconCoords.top + "px";
-
                     }
-
-
-                    P2Name.src = "CharacterNames/Name_" + currentP2.name + ".png";
-                    P2Image.src = "CharacterPictures/" + currentP2.name + ".png";
                     break;
                 case 'ArrowLeft':
                     if (currentP2.left) {
+                        currentP2 = characters[currentP2.left].character;
+                        changeP2Side(currentP2.name);
+                        reinitializeAnimP2();
+                        shiftIndicatorP2(currentP2.name);
                         playNodeSound();
-                        currentP2 = characters[currentP2.left].character
-                        P2Image.classList.remove("animp2");
-                        P2Image.offsetWidth;
-                        P2Image.classList.add("animp2");
-
-                        P2Icon = document.getElementById(currentP2.name + "Icon");
-                        P2iconCoords = P2Icon.getBoundingClientRect();
-                        indicator2.style.left = P2iconCoords.left + "px";
-                        indicator2.style.top = P2iconCoords.top + "px";
 
                     }
-
-
-                    P2Name.src = "CharacterNames/Name_" + currentP2.name + ".png";
-                    P2Image.src = "CharacterPictures/" + currentP2.name + ".png";
                     break;
                 case 'ArrowRight':
                     if (currentP2.right) {
+                        currentP2 = characters[currentP2.right].character;
+                        changeP2Side(currentP2.name);
+                        reinitializeAnimP2();
+                        shiftIndicatorP2(currentP2.name);
                         playNodeSound();
-                        currentP2 = characters[currentP2.right].character
-                        P2Image.classList.remove("animp2");
-                        P2Image.offsetWidth;
-                        P2Image.classList.add("animp2");
-
-                        P2Icon = document.getElementById(currentP2.name + "Icon");
-                        P2iconCoords = P2Icon.getBoundingClientRect();
-                        indicator2.style.left = P2iconCoords.left + "px";
-                        indicator2.style.top = P2iconCoords.top + "px";
 
                     }
-
-
-                    P2Name.src = "CharacterNames/Name_" + currentP2.name + ".png";
-                    P2Image.src = "CharacterPictures/" + currentP2.name + ".png";
                     break;
             }
         });
 
-
+        //Plays the sound effect when the node is changed
         function playNodeSound() {
             const sfx = new Audio("Audio/NodeSound.mp3");
             sfx.volume = 0.7;
             sfx.play();
+        }
+
+        //Restarts the character render animation for P1
+        function reinitializeAnimP1() {
+            P1Image.classList.remove("animp1");
+            P1Image.offsetWidth;
+            P1Image.classList.add("animp1");
+        }
+
+        //Restarts the character render animation for P2
+        function reinitializeAnimP2() {
+            P2Image.classList.remove("animp2");
+            P2Image.offsetWidth;
+            P2Image.classList.add("animp2");
+        }
+
+        //Changes the indicator position for P1
+        function shiftIndicatorP1(name) {
+            P1Icon = document.getElementById(name + "Icon");
+            P1iconCoords = P1Icon.getBoundingClientRect();
+            indicator1.style.left = P1iconCoords.left + "px";
+            indicator1.style.top = P1iconCoords.top + "px";
+        }
+
+        //Changes the indicator position for P2
+        function shiftIndicatorP2(name) {
+            P2Icon = document.getElementById(name + "Icon");
+            P2iconCoords = P2Icon.getBoundingClientRect();
+            indicator2.style.left = P2iconCoords.left + "px";
+            indicator2.style.top = P2iconCoords.top + "px";
+        }
+
+        //Changes the name and render for P1
+        function changeP1Side(name) {
+            P1Name.src = "CharacterNames/Name_" + name + ".png";
+            P1Image.src = "CharacterPictures/" + name + ".png";
+        }
+
+        //Changes the name and render for P2
+        function changeP2Side(name) {
+            P2Name.src = "CharacterNames/Name_" + name + ".png";
+            P2Image.src = "CharacterPictures/" + name + ".png";
         }
     </script>
 
