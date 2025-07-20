@@ -63,6 +63,7 @@
 .flex-container{
     
     display: flex;
+    
 
 }
 
@@ -79,6 +80,7 @@ padding-bottom: 60px;
 .flex-child:first-child{
 
 margin-right:20px;
+ 
 
 }
 
@@ -86,4 +88,43 @@ margin-right:20px;
   transform: scale(1.5);
   transform-origin: center;
 }
+
+.screenbg{
+  
+  background-image: url(Assets/ScreenBG.jpeg);
+  background-size: cover;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  
+}
+
+.firelayer
+{
+  
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(255, 0, 0, 0.5)), url(Assets/Fire.gif);
+  background-size: cover;
+  position: fixed;
+  z-index: -200;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+   
+}
+
+.iconPanel{
+  
+position: absolute; 
+z-index: 3; 
+top: 63.8%;
+left: 15%;
+scale: 1.07;
+
+
+}
+
 
