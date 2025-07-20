@@ -18,7 +18,7 @@ include("inits.php");
 
     <!-- height="540px" width="480px" -->
     <div class="firelayer">
-        
+
         <div class="flex-container" style="position: static; z-index: 1;">
             <div class="flex-child">
                 <img src="CharacterNames/Name_Alisa.png" id="currentP1Name" style="position: fixed; z-index: 3; margin-top:20%; margin-left:10%">
@@ -40,7 +40,7 @@ include("inits.php");
 
         <div style="width: 54.2%; margin: auto; position:relative; z-index:4;">
 
-            
+
 
             <div style="display:flex; ">
 
@@ -91,15 +91,25 @@ include("inits.php");
                 ?>
             </div>
 
-           
 
         </div>
-    
+
     </div>
 
-   
+    <audio id="bgmusic" loop>
+        <source src="Audio/TEKKEN 6 OST - Dust thins out.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="nodesound">
+        <source src="Audio/NodeSound.mp3" type="audio/mpeg">
+    </audio>
+
 
     <script>
+        //the background music element
+        var bgmusic = document.getElementById("bgmusic");
+        bgmusic.volume = 0.2;
+
         //the graph of the characters is converted to json from PHP
         var characters = <?php echo json_encode($characters) ?>;
 
@@ -141,9 +151,12 @@ include("inits.php");
 
         //event listener for Player 1, navigates with WASD
         document.addEventListener('keydown', function(e) {
+            bgmusic.play();
+
             switch (e.code) {
                 case 'KeyW':
                     if (currentP1.up) {
+                        playNodeSound();
                         currentP1 = characters[currentP1.up].character
                         P1Image.classList.remove("animp1");
                         P1Image.offsetWidth;
@@ -153,6 +166,7 @@ include("inits.php");
                         P1iconCoords = P1Icon.getBoundingClientRect();
                         indicator1.style.left = P1iconCoords.left + "px";
                         indicator1.style.top = P1iconCoords.top + "px";
+
                     }
 
 
@@ -161,6 +175,7 @@ include("inits.php");
                     break;
                 case 'KeyS':
                     if (currentP1.down) {
+                        playNodeSound();
                         currentP1 = characters[currentP1.down].character
                         P1Image.classList.remove("animp1");
                         P1Image.offsetWidth;
@@ -170,6 +185,7 @@ include("inits.php");
                         P1iconCoords = P1Icon.getBoundingClientRect();
                         indicator1.style.left = P1iconCoords.left + "px";
                         indicator1.style.top = P1iconCoords.top + "px";
+
                     }
 
 
@@ -178,6 +194,7 @@ include("inits.php");
                     break;
                 case 'KeyA':
                     if (currentP1.left) {
+                        playNodeSound();
                         currentP1 = characters[currentP1.left].character
                         P1Image.classList.remove("animp1");
                         P1Image.offsetWidth;
@@ -187,6 +204,7 @@ include("inits.php");
                         P1iconCoords = P1Icon.getBoundingClientRect();
                         indicator1.style.left = P1iconCoords.left + "px";
                         indicator1.style.top = P1iconCoords.top + "px";
+
                     }
 
 
@@ -195,6 +213,7 @@ include("inits.php");
                     break;
                 case 'KeyD':
                     if (currentP1.right) {
+                        playNodeSound();
                         currentP1 = characters[currentP1.right].character
                         P1Image.classList.remove("animp1");
                         P1Image.offsetWidth;
@@ -204,6 +223,7 @@ include("inits.php");
                         P1iconCoords = P1Icon.getBoundingClientRect();
                         indicator1.style.left = P1iconCoords.left + "px";
                         indicator1.style.top = P1iconCoords.top + "px";
+
                     }
 
 
@@ -215,9 +235,11 @@ include("inits.php");
 
         //Event listner for Player 2, navigates with arrow keys
         document.addEventListener('keydown', function(e) {
+            bgmusic.play();
             switch (e.key) {
                 case 'ArrowUp':
                     if (currentP2.up) {
+                        playNodeSound();
                         currentP2 = characters[currentP2.up].character
                         P2Image.classList.remove("animp2");
                         P2Image.offsetWidth;
@@ -235,6 +257,7 @@ include("inits.php");
                     break;
                 case 'ArrowDown':
                     if (currentP2.down) {
+                        playNodeSound();
                         currentP2 = characters[currentP2.down].character
                         P2Image.classList.remove("animp2");
                         P2Image.offsetWidth;
@@ -244,6 +267,7 @@ include("inits.php");
                         P2iconCoords = P2Icon.getBoundingClientRect();
                         indicator2.style.left = P2iconCoords.left + "px";
                         indicator2.style.top = P2iconCoords.top + "px";
+
                     }
 
 
@@ -252,6 +276,7 @@ include("inits.php");
                     break;
                 case 'ArrowLeft':
                     if (currentP2.left) {
+                        playNodeSound();
                         currentP2 = characters[currentP2.left].character
                         P2Image.classList.remove("animp2");
                         P2Image.offsetWidth;
@@ -261,6 +286,7 @@ include("inits.php");
                         P2iconCoords = P2Icon.getBoundingClientRect();
                         indicator2.style.left = P2iconCoords.left + "px";
                         indicator2.style.top = P2iconCoords.top + "px";
+
                     }
 
 
@@ -269,6 +295,7 @@ include("inits.php");
                     break;
                 case 'ArrowRight':
                     if (currentP2.right) {
+                        playNodeSound();
                         currentP2 = characters[currentP2.right].character
                         P2Image.classList.remove("animp2");
                         P2Image.offsetWidth;
@@ -278,6 +305,7 @@ include("inits.php");
                         P2iconCoords = P2Icon.getBoundingClientRect();
                         indicator2.style.left = P2iconCoords.left + "px";
                         indicator2.style.top = P2iconCoords.top + "px";
+
                     }
 
 
@@ -286,6 +314,13 @@ include("inits.php");
                     break;
             }
         });
+
+
+        function playNodeSound() {
+            const sfx = new Audio("Audio/NodeSound.mp3");
+            sfx.volume = 0.7;
+            sfx.play();
+        }
     </script>
 
 
