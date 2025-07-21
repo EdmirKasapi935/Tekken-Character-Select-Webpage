@@ -9,5 +9,9 @@ Recommended to be opened in Google Chrome or any browser with similar resolution
 -Use the actual assets from Tekken 6 instead of the drawn and improvised ones.<br/>
 -Make improvements to the structure of the page where possible to scale better with different browsers.<br/>
 
+*Instructions:<br/>
+-Player 1 moves indicator using WASD.<br/>
+-Player 2 moves indicator using arrow keys.<br/>
+
 Screenshot:<br/>
 <img width="1918" height="935" alt="image" src="https://github.com/user-attachments/assets/04179800-acbb-450f-ad03-8c18d49ce441" />
